@@ -1,14 +1,16 @@
+var numsVis = true;
 var axis = 0;
-var rX = 0;
-var rY = 0;
-var rZ = 0;
+var r = [0,0,0];
 var count = 0;
+var selected = 0;
+
 PImage one;
 PImage two;
 PImage three;
 PImage four;
 PImage five;
 PImage six;
+PImage blank;
 
 void setup(){
   size(200, 200, P3D);  // Size must be the first statement
@@ -21,7 +23,8 @@ void setup(){
   three = loadImage("three.png");
   four = loadImage("four.png");
   five = loadImage("five.png");
-  six = loadImage("six.png");
+  six = loadImage("dice.svg");
+  blank = loadImage("blank.png");
 }
 
 void draw(){
@@ -32,42 +35,31 @@ void draw(){
   translate(50, 50, 0);
 
   //rotate in chosen direction
-  switch(axis){
-    case 1:
-      rX += PI / 200;
+  var rand = getRandomInt(-50, 50);
+
+  for (var xyz = 0; xyz < 3; xyz++){
+    if (xyz === axis) {
+      r[xyz] += PI / 100;
       count++;
-      if (count === 100) {
-        axis = 2;
+      if (count === 50) {
+        axis = getRandomInt(0, 3);
+        // axis = (axis + 1) % 3
         count = 0;
-      };
-      break;
-    case 2:
-      rY += PI / 200;
-      count++;
-      if (count === 100) {
-        axis = 3;
-        count = 0;
-      };
-      break;
-    case 3:
-      rZ += PI / 200;
-      count++;
-      if (count === 100) {
-        axis = 0;
-        count = 0;
-      };
-      break;
-    default:
-      break;
+      }
+    }
   }
 
-  // box(100);
-  rotateX(rX);
-  rotateY(rY);
-  rotateZ(rZ);
+  rotateX(r[0]);
+  rotateY(r[1]);
+  rotateZ(r[2]);
+
+  for (var xyz = 0; xyz < 3; xyz++){
+
+  }
 
   beginShape();
-  texture(one);
+  if (numsVis) texture(one);
+  if (!numsVis) texture(blank);
   vertex(-50,-50,-50, 0,0);
   vertex(50,-50,-50, 100, 0);
   vertex(50,-50,50, 100, 100);
@@ -75,7 +67,8 @@ void draw(){
   endShape(CLOSE);
 
   beginShape();
-  texture(two);
+  if (numsVis) texture(two);
+  if (!numsVis) texture(blank);
   vertex(-50,-50,50, 0,0);
   vertex(50,-50,50, 100, 0);
   vertex(50,50,50, 100, 100);
@@ -83,7 +76,8 @@ void draw(){
   endShape(CLOSE);
 
   beginShape();
-  texture(three);
+  if (numsVis) texture(three);
+  if (!numsVis) texture(blank);
   vertex(50,-50,50, 0,0);
   vertex(50,-50,-50, 100, 0);
   vertex(50,50,-50, 100, 100);
@@ -91,15 +85,17 @@ void draw(){
   endShape(CLOSE);
 
   beginShape();
-  texture(four);
-  vertex(-50,-50,-50, 0,0);
-  vertex(-50,-50,50, 100, 0);
-  vertex(-50,50,50, 100, 100);
-  vertex(-50,50,-50, 0, 100);
+  if (numsVis) texture(four);
+  if (!numsVis) texture(blank);
+  vertex(-50,50,-50, 0,0);
+  vertex(-50,50,50, 100, 0);
+  vertex(-50,-50,50, 100, 100);
+  vertex(-50,-50,-50, 0, 100);
   endShape(CLOSE);
 
   beginShape();
-  texture(five);
+  if (numsVis) texture(five);
+  if (!numsVis) texture(blank);
   vertex(50,50,-50, 0,0);
   vertex(-50,50,-50, 100, 0);
   vertex(-50,-50,-50, 100, 100);
@@ -107,17 +103,22 @@ void draw(){
   endShape(CLOSE);
 
   beginShape();
-  texture(six);
-  vertex(-50,50,-50, 0,0);
-  vertex(50,50,-50, 100,0);
-  vertex(50,50,50, 100,100);
-  vertex(-50,50,50, 0,100);
+  if (numsVis) texture(six);
+  if (!numsVis) texture(blank);
+  vertex(50,50,50, 0,0);
+  vertex(-50,50,50, 100,0);
+  vertex(-50,50,-50, 100,100);
+  vertex(50,50,-50, 0,100);
   endShape(CLOSE);
-
-
 
 }
 
 void mouseClicked(){
-  axis = (axis + 1) % 4
+  numsVis = !numsVis;
+}
+
+function getRandomInt(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min)) + min;
 }
