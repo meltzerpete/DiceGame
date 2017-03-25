@@ -85,7 +85,7 @@ void draw(){
     }
   }
 
-  // popMatrix();
+  popMatrix();
 
   // pointer
 
@@ -103,7 +103,7 @@ void draw(){
     }
   }
 
-  // pushMatrix();
+  pushMatrix();
 
   fill(255,255,0);
   stroke(0);
