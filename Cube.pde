@@ -62,8 +62,16 @@ void draw(){
   rotateY(r[1]);
   rotateZ(r[2]);
 
+  var dxCoords = [];
+  var dyCoords = [];
+  var dzCoords = [];
+
   // draw cube
   for (var face = 1; face < faces.length; face++) {
+
+    dxCoords[face - 1] = round(modelX(0, 0, 1));
+    dyCoords[face - 1] = round(modelY(0, 0, 1));
+    dzCoords[face - 1] = round(modelZ(0, 0, 1));
 
     beginShape();
     if (faces[face]) {
@@ -119,6 +127,12 @@ void draw(){
   translate(0, -30, 0);
   if (stop) bounce = 40 * sin(rawBounce += 0.2);
 
+  // draw the pointer
+
+  pxCoord = round(modelX(0,0,1));
+  pyCoord = round(modelY(0,0,1));
+  pzCoord = round(modelZ(0,0,1));
+
   beginShape();
   vertex(10,-120 + bounce,0);
   vertex(0,-120 + bounce,10);
@@ -146,18 +160,13 @@ void draw(){
   camera();
   textSize(18);
 
-  var c = [];
-  var p = [];
   var d = [];
-  for (var i = 0; i < 3; i++) {
-    c[i] = (round((100 * r[i] / TWO_PI)) % 100) / 100;
-    p[i] = (round((100 * pR[i] / TWO_PI)) % 100) / 100;
-    d[i] = round(100 * (c[i] - p[i])) / 100;
+  for (var i = 0; i < 6; i++) {
+    d[i] = round(dist(dxCoords[i], dyCoords[i], dzCoords[i], pxCoord, pyCoord, pzCoord)) - 29;
   }
 
-  text("Cube: (" + c[0] + ", " + c[1] + ", " + c[2] + ")", 10, 10);
-  text("Point: (" + p[0] + ", " + p[1] + ", " + p[2] + ")", 10, 40);
-  text("Diff: (" + d[0] + ", " + d[1] + ", " + d[2] + ")", 10, 70);
+  text("Pointing at: " + (d.indexOf(0) + 1), 10, 10);
+
 
 }
 
