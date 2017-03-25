@@ -1,0 +1,20 @@
+{
+  "name": "dicegame",
+  "description": "",
+  "main": "index.html",
+  "authors": [
+    "meltzerpete"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/meltzerpete/DiceGame",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "Processing.js": "^1.6.6"
+  }
+}
