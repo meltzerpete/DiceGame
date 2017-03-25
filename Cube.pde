@@ -162,10 +162,10 @@ void draw(){
 
   var d = [];
   for (var i = 0; i < 6; i++) {
-    d[i] = round(dist(dxCoords[i], dyCoords[i], dzCoords[i], pxCoord, pyCoord, pzCoord)) - 29;
+    d[i] = dist(dxCoords[i], dyCoords[i], dzCoords[i], pxCoord, pyCoord, pzCoord);
   }
 
-  text("Pointing at: " + (d.indexOf(0) + 1), 10, 10);
+  text("Pointing at: " + (d.indexOf(min(d)) + 1), 10, 10);
 
 
 }
