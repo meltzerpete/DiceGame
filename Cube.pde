@@ -171,11 +171,21 @@ void draw(){
 }
 
 void mouseClicked(){
-  numsVis = !numsVis;
+  if (mouseX < width / 2) {
+    numsVis = !numsVis;
+  } else {
+    stop = !stop;
+    while (abs(bounce) > 0.5) {
+      bounce = 40 * sin(rawBounce += 0.1);
+    }
+  }
 }
 
 void keyPressed() {
   stop = !stop;
+  while (abs(bounce) > 0.5) {
+    bounce = 40 * sin(rawBounce += 0.1);
+  }
 }
 
 function getRandomInt(min, max) {
