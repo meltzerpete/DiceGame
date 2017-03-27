@@ -44,9 +44,13 @@ void setup(){
 
 void draw(){
 
-  while(!(faces[0].loaded || faces[1].loaded || faces[2].loaded
-        || faces[3].loaded || faces[4].loaded || faces[5].loaded
-        || faces[6].loaded));
+  if (!(faces[0].loaded && faces[1].loaded && faces[2].loaded
+        && faces[3].loaded && faces[4].loaded && faces[5].loaded
+        && faces[6].loaded)) {
+          textSize(18);
+          fill(0);
+          text("Loading Images", 10, 10);
+        }
 
   background(255, 173, 51);
   camera(200.0, -100.0, 200.0, 50, 50, 0,
