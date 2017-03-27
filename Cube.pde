@@ -33,13 +33,13 @@ void setup(){
   bSize = width/13;
 
   // load textures
-  faces.push(loadImage("blank.png"));
-  faces.push(loadImage("one.png"));
-  faces.push(loadImage("two.png"));
-  faces.push(loadImage("three.png"));
-  faces.push(loadImage("four.png"));
-  faces.push(loadImage("five.png"));
-  faces.push(loadImage("six.png"));
+  faces.push(loadImage("./blank.png"));
+  faces.push(loadImage("./one.png"));
+  faces.push(loadImage("./two.png"));
+  faces.push(loadImage("./three.png"));
+  faces.push(loadImage("./four.png"));
+  faces.push(loadImage("./five.png"));
+  faces.push(loadImage("./six.png"));
 }
 
 void draw(){
