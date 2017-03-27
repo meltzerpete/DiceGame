@@ -39,19 +39,14 @@ void setup(){
   faces.push(loadImage("three.png"));
   faces.push(loadImage("four.png"));
   faces.push(loadImage("five.png"));
-  faces.push(loadImage("dice.svg"));
-
-  while(faces[0].image.width == 0);
-  while(faces[1].image.width == 0);
-  while(faces[2].image.width == 0);
-  while(faces[3].image.width == 0);
-  while(faces[4].image.width == 0);
-  while(faces[5].image.width == 0);
-  while(faces[6].image.width == 0);
-
+  faces.push(loadImage("six.png"));
 }
 
 void draw(){
+
+  while(!(faces[0].loaded || faces[1].loaded || faces[2].loaded
+        || faces[3].loaded || faces[4].loaded || faces[5].loaded
+        || faces[6].loaded));
 
   background(255, 173, 51);
   camera(200.0, -100.0, 200.0, 50, 50, 0,
