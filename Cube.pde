@@ -23,7 +23,7 @@ var dUpDown = Math.random() > 0.5 ? 1 : -1;
 var pUpDown = pAxis === 0 ? 1 : -1;
 
 var bSize;
-var aHeight = 0;
+var aHeight = -0.1;
 
 var stop;
 
