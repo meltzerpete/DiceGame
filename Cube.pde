@@ -169,10 +169,8 @@ void draw(){
 
   popMatrix();
 
-  // text
-  fill(0);
+  // text/buttons
   camera();
-  textSize(18);
 
   var d = [];
   for (var i = 0; i < 6; i++) {
@@ -207,6 +205,7 @@ void draw(){
     incorrect = false;
   }
 
+  textSize(18);
   fill(0);
   text("Score: " + score, 10, 10);
 
