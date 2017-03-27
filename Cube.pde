@@ -1,10 +1,4 @@
-/* @pjs preload="blank.png"; */
-/* @pjs preload="one.png"; */
-/* @pjs preload="two.png"; */
-/* @pjs preload="three.png"; */
-/* @pjs preload="four.png"; */
-/* @pjs preload="five.png"; */
-/* @pjs preload="six.png"; */
+/* @pjs preload="blank.png,one.png,two.png,three.png,four.png,five.png,six.png"; */
 
 var guessTime;
 
