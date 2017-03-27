@@ -1,3 +1,5 @@
+var guessTime;
+
 var score = 0;
 var incorrect;
 var currentFace;
@@ -10,13 +12,13 @@ var selected;
 
 var pSpin;
 var pR = [0,0,0];
-var pAxis = getRandomInt(0, 3);
+var pAxis = Math.random() > 0.5 ? 0 : 2;
 var pCount;
 var rawBounce;
 var bounce;
 
 var dUpDown = Math.random() > 0.5 ? 1 : -1;
-var pUpDown = Math.random() > 0.5 ? 1 : -1;
+var pUpDown = pAxis === 0 ? 1 : -1;
 
 var bSize;
 var aHeight = 0;
@@ -38,6 +40,7 @@ void setup(){
   faces.push(loadImage("four.png"));
   faces.push(loadImage("five.png"));
   faces.push(loadImage("dice.svg"));
+
 }
 
 void draw(){
@@ -54,6 +57,7 @@ void draw(){
   strokeWeight(1);
 
   pushMatrix();
+  rotateX(HALF_PI);
 
   // rotate dice on random axis
   if (!stop) {
@@ -119,6 +123,7 @@ void draw(){
           pAxis = getRandomInt(0, 3);
           pCount = 0;
           stop = true;
+          guessTime = true;
         }
       }
     }
@@ -209,8 +214,10 @@ void draw(){
 
 void mouseClicked() {
 
-  for (var i = 1; i < faces.length; i++) {
-    if (mouseX > (2*i-1)*bSize
+  if (guessTime) {
+
+    for (var i = 1; i < faces.length; i++) {
+      if (mouseX > (2*i-1)*bSize
       && mouseX < (2*i-1)*bSize+bSize
       && mouseY > height-2*bSize*aHeight
       && mouseY < height+bSize-2*bSize*aHeight) {
@@ -219,17 +226,21 @@ void mouseClicked() {
           numsVis = false;
           stop = false;
           score++;
+          guessTime = false;
           break;
         } else {
           incorrect = true;
         }
       }
-  }
+    }
 
-  if (incorrect) {
-    score -= 5;
-    if (score < 0) score = 0;
-    console.log("incorrect");
+    if (incorrect) {
+      score -= 5;
+      if (score < 0) score = 0;
+      console.log("incorrect");
+    }
+
+
   }
 }
 
