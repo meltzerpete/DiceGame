@@ -1,3 +1,11 @@
+/* @pjs preload="blank.png"; */
+/* @pjs preload="one.png"; */
+/* @pjs preload="two.png"; */
+/* @pjs preload="three.png"; */
+/* @pjs preload="four.png"; */
+/* @pjs preload="five.png"; */
+/* @pjs preload="six.png"; */
+
 var guessTime;
 
 var score = 0;
@@ -33,13 +41,13 @@ void setup(){
   bSize = width/13;
 
   // load textures
-  faces.push(loadImage("./blank.png"));
-  faces.push(loadImage("./one.png"));
-  faces.push(loadImage("./two.png"));
-  faces.push(loadImage("./three.png"));
-  faces.push(loadImage("./four.png"));
-  faces.push(loadImage("./five.png"));
-  faces.push(loadImage("./six.png"));
+  faces.push(loadImage("blank.png"));
+  faces.push(loadImage("one.png"));
+  faces.push(loadImage("two.png"));
+  faces.push(loadImage("three.png"));
+  faces.push(loadImage("four.png"));
+  faces.push(loadImage("five.png"));
+  faces.push(loadImage("six.png"));
 }
 
 void draw(){
