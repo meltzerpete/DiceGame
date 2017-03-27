@@ -41,6 +41,14 @@ void setup(){
   faces.push(loadImage("five.png"));
   faces.push(loadImage("dice.svg"));
 
+  while(faces[0].image.width == 0);
+  while(faces[1].image.width == 0);
+  while(faces[2].image.width == 0);
+  while(faces[3].image.width == 0);
+  while(faces[4].image.width == 0);
+  while(faces[5].image.width == 0);
+  while(faces[6].image.width == 0);
+
 }
 
 void draw(){
